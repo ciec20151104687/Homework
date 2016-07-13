@@ -1,29 +1,26 @@
-// ConsoleApplication2.cpp : 定义控制台应用程序的入口点。
-//
-
-#include "stdafx.h"
-#include "stdlib.h"
-
-
-int _tmain(int argc, _TCHAR* argv[])
+#include<stdio.h>
+#include <string.h>
+#include <stdlib.h>
+int main()
 {
 	FILE *fp;
-	char *s;
-	int len = NULL;
-	if((fp = fopen("C:\\Users\\lyh78\\Desktop\\new\\export.gpx", "rb"))==0)
+	char str[80];
+	fp=fopen("export.gpx", "r");
+	if(fp==NULL)
 	{
-		printf("error\n");
-		return(-1);
+		printf("error");
+		exit(-1);
 	}
-	fseek(fp, 0, SEEK_END);
-	len = ftell(fp);
-	s = (char *)malloc(len);
-	fseek(fp, 0, SEEK_SET);
-	while (fread(s, 1, len, fp))
+	else
 	{
-		printf("%s", s);
+		while(fgets(str,20,fp))
+		{
+			printf("%s",str);
+			
+		}
+		fclose(fp);
 	}
-	
-	fclose(fp);
-    return 0;
-}	 
+	return 0;
+}
+						            
+					 
